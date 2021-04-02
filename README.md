@@ -7,6 +7,22 @@
 ![ScreenShot](images/image1.png)
 ![ScreenShot](images/image2.png)
 
+
+### functionalities 
+
+- Guest
+home, about, login are implemented 
 - To login as admin - admin@email.org
 - To login as member - member@email.org
+
+- Admin
+home, EditBooks(add, remove) , logout, about implemented
+
+- member 
+home, about, booklist, logout 
+
+
+
+
+
 
