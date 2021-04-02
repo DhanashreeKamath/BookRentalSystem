@@ -1,6 +1,6 @@
 # BookRentalSystem
 
-- clone BookRentalSystem
+- fork BookRentalSystem
 - `install npm install -g parcel-bundler` outside main repo
 - install inside `npm install --save react react-dom` inside BookRentalSystem/ReactRentalSystem/
 - to run the react app use `parcel index.html` and get the loacalhost adress and open it in the web browser
