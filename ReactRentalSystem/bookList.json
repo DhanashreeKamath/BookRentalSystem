@@ -1,0 +1,14 @@
+[{"title": "Operating System Concepts",
+           "author": ["Abraham Silberschatz ","Greg Gagne"]
+                    },
+         {"title": "Java The Complete Reference Eleventh Edition",
+          "author": ["Herbert Schildt"]
+          },
+         {"title": "An Introduction to Mechanical Engineering", 
+         "author": ["Jonathan Wickert","Kemper Lewis"]
+          },
+          {"title": "Discrete Mathematics and Its Applications", 
+         "author": ["Kenneth Rosen"]},
+         {"title": "Architecting Cloud Computing Solutions", 
+         "author": ["Kevin L. Jackson ","Scott Goessling"]}
+      ];
