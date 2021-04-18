@@ -44,7 +44,7 @@ class AdminApp extends React.Component {
 			<li className = {this.state.show == "editBook" ? "active" : null}><a onClick={this.editBookHandler.bind(this)}>EditBooks</a></li>
 			<li className = {this.state.show == "about" ? "active" : null}><a onClick={this.aboutHandler.bind(this)}>About</a></li>
 			<li className = {this.state.show == "logout" ? "active" : null}><a onClick={this.logoutHandler.bind(this)}>Logout</a></li>
-			<li className = {this.state.show == "membersOnly" ? "active" : null}><a onClick={this.membersOnlyHandler.bind(this)}>MembersOnly</a></li>
+			{/*<li className = {this.state.show == "membersOnly" ? "active" : null}><a onClick={this.membersOnlyHandler.bind(this)}>MembersOnly</a></li>*/}
 		</ul>
 	</nav> ;
 

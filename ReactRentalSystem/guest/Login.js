@@ -21,6 +21,7 @@ class Login extends React.Component {
         this.roleChange("member", userinfo)
      else
         this.roleChange("guest", userinfo)
+    
 }
 
 render()
