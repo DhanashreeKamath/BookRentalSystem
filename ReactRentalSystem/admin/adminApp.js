@@ -32,11 +32,11 @@ class AdminApp extends React.Component {
 		this.roleChange("guest",null);
 
 	}
-	
 	membersOnlyHandler(event)
 	{
 		this.setState({show:"membersOnly"})
-	}
+	} 
+
 	render() {
         let navBar= <nav className="navbox">
 		<ul className = "main-menu">

@@ -9,9 +9,29 @@ class AdminActivity extends React.Component {
 	constructor(props)
 	{
 		super(props);
-		this.state = { bookList:bookList};
+		this.state = {bookList:bookList};
 	}
 
+ //   componentDidMount() {
+	// 	let that = this;
+	// 	fetch('https://51st8baw13.execute-api.us-east-1.amazonaws.com/default/getBooksList')
+	// 	.then(function(response) {
+	// 		console.log(response);
+ //        	if (response.status == 200) {
+ //        		return response.json();
+ //        }
+ 
+ //        })
+ //        .then(function(data) {
+ //        	console.log(data.body["Items"]);
+ //        	if (data) {
+ //            	that.setState({bookList:data.body["Items"]});
+	// 		}
+ //        });
+	// }
+
+
+    
 	addBook() {
 		let authorArr = (author.value).split(",")
 		let newBookDict = {title:title.value,author: authorArr};
@@ -30,6 +50,9 @@ class AdminActivity extends React.Component {
 		this.setState({bookList:newArray});
 
 	}
+	
+
+	
 
 	render(){
 
