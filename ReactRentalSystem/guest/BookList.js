@@ -16,14 +16,14 @@ class BookList extends React.Component {
 		let that = this;
 		fetch('https://51st8baw13.execute-api.us-east-1.amazonaws.com/default/getBooksList')
 		.then(function(response) {
-			console.log(response);
+			//console.log(response);
         	if (response.status == 200) {
         		return response.json();
         }
  
         })
         .then(function(data) {
-        	console.log(data.body["Items"]);
+        	//console.log(data.body["Items"]);
         	if (data) {
             	that.setState({bookList:data.body["Items"]});
 			}
