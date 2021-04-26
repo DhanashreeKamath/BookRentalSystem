@@ -1,28 +1,78 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import bookList from "../bookList.json";
+// import bookList from "../bookList.json";
 import images from '../libimages/*.jpg';
 
 class MemberActivity extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {bookList:bookList};
+		this.state = {bookList:[]};
+		this.userInfo = props.userInfo;
+	}
+    
+     componentDidMount() {
+		let that = this;
+		fetch('https://51st8baw13.execute-api.us-east-1.amazonaws.com/default/getBooksList')
+		.then(function(response) {
+			//console.log(response);
+        	if (response.status == 200) {
+        		return response.json();
+        }
+ 
+        })
+        .then(function(data) {
+        	//console.log(data.body["Items"]);
+        	if (data) {
+            	that.setState({bookList:data.body["Items"]});
+			}
+        });
 	}
 
+	refreshPage() {
+       this.componentDidMount();
+    }
  
 	rent(i) {
-		let books = this.state.bookList;
-		books[i].status = "issued";
-		books[i].rentedby = "member";
-		this.setState({bookList:books});
+	  let that = this;
+      fetch('https://c5aga9wn6k.execute-api.us-east-1.amazonaws.com/default/updateBookStatus', {
+            method: 'POST', 
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                "statusupdateto":"notAvailable",
+                "id": i,
+                "rentedby" : that.userInfo.body.username
+            }),
+        }).then(function(response) {
+            console.log('Request status code: ', response.statusText, response.status, response.type);
+            if (response.status == 200) {
+            	that.refreshPage();
+        		return response.json();
+        	}
+         });
 	}
-	return(i) {
-        let books = this.state.bookList;
-        books[i].rentedby = null;
-        books[i].status = "available";
-        this.setState({bookList:books});
 
+	return(i) {
+      let that = this;
+      fetch('https://c5aga9wn6k.execute-api.us-east-1.amazonaws.com/default/updateBookStatus', {
+            method: 'POST', 
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                "statusupdateto":"available",
+                "id": i,
+                "rentedby" : "admin"
+            }),
+        }).then(function(response) {
+            console.log('Request status code: ', response.statusText, response.status, response.type);
+            if (response.status == 200) {
+            	that.refreshPage();
+        		return response.json();
+        	}
+         });
 	}
 
 	render(){
@@ -51,10 +101,10 @@ class MemberActivity extends React.Component {
 		    <td>{books.title}</td>
 		    <td>{(books.author).join(", ")}</td> 
 		    <td>{books.status}</td>
-		    <td><button type="button" id = "Rent" onClick={that.rent.bind(that,i)} disabled = {
-		    	books.status == "issued"}>Rent</button></td>
+		    <td><button type="button" id = "Rent" onClick={that.rent.bind(that,books.id)} disabled = {
+		    	books.status == "notAvailable"}>Rent</button></td>
 		    <td> 
-		    {books.rentedby == "member" && <button type="button" id = "Return" onClick={that.return.bind(that,i)} >Return</button>}
+		    {books.rentedby == that.userInfo.body.username && <button type="button" id = "Return" onClick={that.return.bind(that,books.id)} >Return</button>}
 		    </td>
 		    </tr>
 		}

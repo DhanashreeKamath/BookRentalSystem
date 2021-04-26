@@ -58,7 +58,7 @@ class MemberApp extends React.Component {
 			contents = <AboutSystem />;
 			break;
 			case "bookList":
-			contents = <MemberActivity />;
+			contents = <MemberActivity userInfo={this.userInfo}/>;
 			break;
 			default:
 			contents = <h2>This page is not implemented yet!!!</h2>;

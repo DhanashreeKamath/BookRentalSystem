@@ -17,7 +17,6 @@ class App extends React.Component {
 
     roleChange(roleVal, userInfo) {
      	this.setState({role: roleVal, userInfo:userInfo});
-     	console.log(userInfo)
     }
     // Renders component based on current state and props
     render() {

@@ -32,20 +32,7 @@ class AdminActivity extends React.Component {
 
 
      refreshPage() {
-     	console.log("came here");
-     	let that = this;
-    	fetch('https://51st8baw13.execute-api.us-east-1.amazonaws.com/default/getBooksList')
-		.then(function(response) {
-        	if (response.status == 200) {
-        		return response.json();
-        }
- 
-        })
-        .then(function(data) {
-        	if (data) {
-            	that.setState({bookList:data.body["Items"]});
-			}
-        });
+       this.componentDidMount();
     }
     
 	addBook() {
