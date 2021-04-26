@@ -1,14 +1,45 @@
-[{"title": "Operating System Concepts",
-           "author": ["Abraham Silberschatz ","Greg Gagne"]
-                    },
-         {"title": "Java The Complete Reference Eleventh Edition",
-          "author": ["Herbert Schildt"]
-          },
-         {"title": "An Introduction to Mechanical Engineering", 
-         "author": ["Jonathan Wickert","Kemper Lewis"]
-          },
-          {"title": "Discrete Mathematics and Its Applications", 
-         "author": ["Kenneth Rosen"]},
-         {"title": "Architecting Cloud Computing Solutions", 
-         "author": ["Kevin L. Jackson ","Scott Goessling"]}
-      ];
+[
+  {
+    "status": "available",
+    "title": "Operating System Concepts",
+    "author": [
+      "Abraham Silberschatz ",
+      "Greg Gagne"
+    ],
+    "rentedby": null
+  },
+  {
+    "status": "available",
+    "title": "Java The Complete Reference Eleventh Edition",
+    "author": [
+      "Herbert Schildt"
+    ],
+    "rentedby": null
+  },
+  {
+    "status": "available",
+    "title": "An Introduction to Mechanical Engineering",
+    "author": [
+      "Jonathan Wickert",
+      "Kemper Lewis"
+    ],
+    "rentedby": null
+  },
+  {
+    "status": "available",
+    "title": "Discrete Mathematics and Its Applications",
+    "author": [
+      "Kenneth Rosen"
+    ],
+    "rentedby": "null"
+  },
+  {
+    "status": "available",
+    "title": "Architecting Cloud Computing Solutions",
+    "author": [
+      "Kevin L. Jackson ",
+      "Scott Goessling"
+    ],
+    "rentedby": "null"
+  }
+]
