@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import HomeSystem from "./Home";
 import AboutSystem from "./About";
-import ClubLogin from "./Login";
+import BookRentalLogin from "./Login";
 import BookList from "./bookList";
+import SignUpSystem from "./SignUp.js";
 
 class GuestApp extends React.Component {
 	constructor(props) {
@@ -28,9 +29,9 @@ class GuestApp extends React.Component {
 	{
 		this.setState({show:"bookList"});
 	}
-	membershipHandler(event)
+	signUpHandler(event)
 	{
-		this.setState({show:"membership"})
+		this.setState({show:"signUp"})
 	}
    
 
@@ -42,7 +43,7 @@ class GuestApp extends React.Component {
 			<li className = {this.state.show == "bookList" ? "active" : null}><a onClick={this.bookListHandler.bind(this)}>BookList</a></li> 
 			<li className = {this.state.show == "about" ? "active" : null}><a onClick={this.aboutHandler.bind(this)}>About</a></li>
 			<li className = {this.state.show == "login" ? "active" : null}><a onClick={this.loginHandler.bind(this)}>Login</a></li>
-			<li className = {this.state.show == "membership" ? "active" : null}><a onClick={this.membershipHandler.bind(this)}>Membership</a></li>
+			<li className = {this.state.show == "signUp" ? "active" : null}><a onClick={this.signUpHandler.bind(this)}>SignUp</a></li>
 		</ul>
 	</nav>;
 	
@@ -55,10 +56,13 @@ class GuestApp extends React.Component {
                 contents = <AboutSystem role={this.state.about}/>;
                 break;
             case "login":
-                contents = <ClubLogin role={this.state.login} roleChange={this.roleChange}/>;
+                contents = <BookRentalLogin role={this.state.login} roleChange={this.roleChange}/>;
                 break;
             case "bookList":
                 contents = <BookList role={this.state.bookList}/>;
+                break;
+            case "signUp":
+                contents = <SignUpSystem role={this.state.signUp}/>;
                 break;
             default:
                 contents = <h2>This page is not implemented yet!!!</h2>;

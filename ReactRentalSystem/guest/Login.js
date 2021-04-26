@@ -32,7 +32,6 @@ class Login extends React.Component {
                 return response.json();
             }
         }).then(function(data) {
-            console.log(data.body.role);
             if (data){
             
             that.roleChange(data.body.role, data);
