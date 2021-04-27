@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "parcel build index.html --public-url / --no-minify -d /app/dist",
+    "start": "parcel serve /app/dist/index.html"
   },
   "keywords": [],
   "author": "",
@@ -15,11 +16,9 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/preset-react": "^7.13.13",
     "cssnano": "^5.0.1",
     "postcss": "^8.2.13"
-  },
-  "scripts": {
-    "build": "parcel build index.html --public-url / --no-minify -d /app/dist",
-    "start": "parcel serve /app/dist/index.html"
   }
 }
