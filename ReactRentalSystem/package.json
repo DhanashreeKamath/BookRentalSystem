@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "parcel build index.html --public-url / --no-minify -d /app/dist",
-    "start": "parcel serve /app/dist/index.html"
+    "build": "parcel build index.html --public-url / --no-minify",
+    "start": "parcel /index.html"
   },
   "keywords": [],
   "author": "",
