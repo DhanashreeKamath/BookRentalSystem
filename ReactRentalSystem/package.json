@@ -13,5 +13,13 @@
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "cssnano": "^5.0.1",
+    "postcss": "^8.2.13"
+  },
+  "scripts": {
+    "build": "parcel build index.html --public-url / --no-minify",
+    "start": "parcel index.html"
   }
 }
