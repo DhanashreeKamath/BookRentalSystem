@@ -20,6 +20,6 @@
   },
   "scripts": {
     "build": "parcel build index.html --public-url / --no-minify -d /app/dist",
-    "start": "parcel /app/dist/index.html"
+    "start": "parcel serve /app/dist/index.html --no-cache"
   }
 }
