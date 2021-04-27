@@ -19,7 +19,7 @@
     "postcss": "^8.2.13"
   },
   "scripts": {
-    "build": "parcel build index.html --public-url / --no-minify",
-    "start": "parcel index.html"
+    "build": "parcel build index.html --public-url / --no-minify -d /app/dist",
+    "start": "parcel /app/dist/index.html"
   }
 }
