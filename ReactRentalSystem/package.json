@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "parcel build index.html --public-url / --no-minify",
-    "start": "parcel index.html"
+    "start": "parcel serve dist/index.html"
   },
   "keywords": [],
   "author": "",
