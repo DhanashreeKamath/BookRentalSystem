@@ -47,8 +47,7 @@ class AdminApp extends React.Component {
 			{/*<li className = {this.state.show == "membersOnly" ? "active" : null}><a onClick={this.membersOnlyHandler.bind(this)}>MembersOnly</a></li>*/}
 		</ul>
 	</nav> ;
-
-	let info = <p>{this.userInfo.firstName} {this.userInfo.lastName}: {this.userInfo.role}</p> ;
+	let info = <p>{this.userInfo.body.firstname} {this.userInfo.body.lastname}: {this.userInfo.body.role}</p> ;
 
    let contents = null;
 	switch (this.state.show) {

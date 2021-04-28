@@ -36,7 +36,7 @@ class SignUp extends React.Component {
 				lastname: lastname.value,
 				email: email.value,
 				password: password.value,
-				role: role.value
+				role: "member"
 			})
 			}
 		).then(function(response) {
@@ -73,8 +73,6 @@ class SignUp extends React.Component {
 						<input id="email" type="text" />
 						<label>Password:</label>
 						<input id="password" type="text" />
-						<label>Role:</label>
-						<input id="role" type="text" />
 						<button id="loginBtn" onClick={this.addUser}>
 							Sign me up!
 						</button>
