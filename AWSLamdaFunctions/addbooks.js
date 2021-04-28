@@ -5,38 +5,36 @@ const docClient = new AWS.DynamoDB.DocumentClient({region: "us-east-1"});
 exports.handler = (event, context, callback) => {
     var count = 0 ;
     const getparams = {
-        TableName: "users",
+        TableName: "books",
         Key:"id"
     };
 
     docClient.scan(getparams, onScan);
 
     function onScan(err, data) {
+
         if (err) {
             console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
         } else {
+
             console.log("Scan succeeded.");
             data.Items.forEach(function(users) {
-                console.log("displaying ID"+count);
                 count++;
-
+                console.log("displaying ID"+count);
             });
 
             count = count + 1 ;
         }
-        console.log("id in D in on scanB" + count);
-
         const params = {
             Item: {
                 id : count,
-                username: event.username,
-                firstname: event.firstname,
-                lastname: event.lastname,
-                email: event.email,
-                password : event.password,
-                role : event.role
+                active: Boolean(true),
+                rentedby: "admin",
+                title: event.title,
+                author: docClient.createSet(event.author),
+                status: "available"
             },
-            TableName: "users"
+            TableName: "books"
         };
         const response = {
             statusCode: 200,
@@ -48,7 +46,7 @@ exports.handler = (event, context, callback) => {
                 'Access-Control-Allow-Credentials': true,
                 "X-Requested-With" : "*"
             },
-            body: JSON.stringify('User added Successfully'),
+            body: JSON.stringify('Book added successfully!'),
         };
 
         docClient.put(params, function(err, data) {
@@ -60,7 +58,6 @@ exports.handler = (event, context, callback) => {
         });
         callback(null, response);
     }
-    console.log("id in DB" + global.count);
-
+    console.log("id in DB" + count);
 
 };

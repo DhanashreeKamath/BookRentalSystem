@@ -3,7 +3,7 @@ const docClient = new AWS.DynamoDB.DocumentClient({region: "us-east-1"});
 
 
 exports.handler = (event, context, callback) => {
-    var found = "No user found with this username" ;
+    var found = "Username or password is incorrect" ;
     const getparams = {
         TableName: "users",
         Key:"id"
@@ -20,9 +20,12 @@ exports.handler = (event, context, callback) => {
 
             data.Items.forEach(function(users) {
 
-                if(event.username===users.username)
+
+                if(event.username===users.username  && (event.password===users.password))
                 {
+                    console.log("Inside If.");
                     found = users ;
+
                 }
 
             });

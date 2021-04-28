@@ -4,83 +4,49 @@ const docClient = new AWS.DynamoDB.DocumentClient({region: "us-east-1"});
 
 exports.handler = (event, context, callback) => {
 
-    var found = 0 ;
     const getparams = {
-        TableName: "books",
-        Key:"id"
+        "TableName": "books",
+        Key: {
+            id : event.id
+        },
+        UpdateExpression: "set #expressionValue = :val1 , #expressionValue1 = :val2",
+        ExpressionAttributeNames: {
+            '#expressionValue': 'status',
+            '#expressionValue1':'rentedby'
+        },
+        ConditionExpression: "id = :val3",
+        ExpressionAttributeValues: {
+            ":val1":event.statusupdateto,
+            ":val2":event.rentedby,
+            ":val3":event.id
+        },
+        "ReturnValues": "ALL_NEW"
     };
 
+    console.log("Updating the item...");
 
-    docClient.scan(getparams, onScan);
-
-    function onScan(err, data) {
+    docClient.update(getparams, function(err, data) {
         if (err) {
-            console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
-        }
-        else
-        {
-
-            console.log("Books Scan succeeded.");
-
-            data.Items.forEach(function(books)
-            {   if((event.title===books.title) && (books.active===true))
-            {    console.log("Inside If of books");
-                found = books.id ;
-            }
-            });
-
-            console.log("Inside else : found id is" + found);
-
+            console.error("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
         }
 
-        console.log("Inside onScan : found id is" + found);
 
-        console.log("Inside onScan : found id is username is " + event.username);
-        const getparams = {
-            "TableName": "books",
-            Key: {
-                id : found
+        const response = {
+            statusCode: 200,
+            headers: {
+                "Content-Type" : "application/json",
+                "Access-Control-Allow-Headers" : "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
+                "Access-Control-Allow-Methods" : "OPTIONS,POST",
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true,
+                "X-Requested-With" : "*"
             },
-            UpdateExpression: "set #expressionValue = :val1 , #expressionValue1 = :val2",
-            ExpressionAttributeNames: {
-                '#expressionValue': 'bookstatus',
-                '#expressionValue1':'username'
-            },
-            ConditionExpression: "title = :val3",
-            ExpressionAttributeValues: {
-                ":val1":event.statusupdateto,
-                ":val2":event.username,
-                ":val3":event.title
-            },
-            "ReturnValues": "ALL_NEW"
+            body: data,
         };
 
-        console.log("Updating the item...");
+        callback(null, response);
+    });
 
-        docClient.update(getparams, function(err, data) {
-            if (err) {
-                console.error("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
-            } else {
-                console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
-            }
-
-
-            const response = {
-                statusCode: 200,
-                headers: {
-                    "Content-Type" : "application/json",
-                    "Access-Control-Allow-Headers" : "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
-                    "Access-Control-Allow-Methods" : "OPTIONS,POST",
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Credentials': true,
-                    "X-Requested-With" : "*"
-                },
-                body: data,
-            };
-
-            callback(null, response);
-
-        });
-
-    }
 };
