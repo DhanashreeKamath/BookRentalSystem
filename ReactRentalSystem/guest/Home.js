@@ -9,7 +9,10 @@ function Home(props){
 			<h1 className="fh-custom-font"> Book Rental System</h1>
 			<h2> Introduction</h2>
 		</header>
-		<p>Union city music is the best destination for the music lovers to interact and perform.It provides ways for people to learn , mentor and play music. It is not only for professionals but also for hobbyists.Learn from expert teachers.</p>
+		<p className="fh-custom-font-para">Welcome to the "BOOK RENTAL SYSTEMS". It is the most convinet way to rent the books while sitting at home.</p>
+		<p className="fh-custom-font-para"> We provide all types of books ranging from science to novels.
+		</p>
+
 		<figure>
 			<img src = {indexImg} alt="Book Image" id="indexImg"/>
 			<figcaption>Book Rental.</figcaption>

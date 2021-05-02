@@ -4,6 +4,12 @@
 	text-align: center;
 	font-size: 50px;
 }
+.fh-custom-font-para
+{
+	
+	text-align: left;
+	font-size: 20px;
+}
 
 #indexImg {
 	display: block;
