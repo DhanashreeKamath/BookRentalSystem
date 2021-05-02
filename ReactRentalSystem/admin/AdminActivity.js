@@ -49,12 +49,15 @@ class AdminActivity extends React.Component {
                 "author": authorArr
             }),
         }).then(function(response) {
-        	console.log("hello**");
             console.log('Request status code: ', response.statusText, response.status, response.type);
             if (response.status == 200) {
             	that.refreshPage();
         		return response.json();
         	}
+         }).then(function(data) {
+            if(data.body == "\"input is empty\"") {
+            	alert("Title and Author cannot be empty!")
+            }
          });
 	}
 

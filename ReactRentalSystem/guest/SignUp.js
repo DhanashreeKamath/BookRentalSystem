@@ -37,9 +37,11 @@ class SignUp extends React.Component {
   addUser() {
 	let that = this;
 	console.log("reached here");
-	console.log("email" + email.value);
+	console.log("address" + address.value);
+    console.log("pincode" + pincode.value);
 	let hashedPassword = that.passwordHash(password.value);
-    if(username.value != "" && firstname.value != "" && lastname.value!= "" && email.value!= "" && password.value != "" && this.validateEmail(email.value)) {
+   if(username.value != "" && firstname.value != "" && lastname.value!= "" && email.value!= "" && password.value != "" && this.validateEmail(email.value) 
+    	&& address.value !="" && pincode.value != "") {
 	   fetch(
 	   	"https://qen9j6ly9b.execute-api.us-east-1.amazonaws.com/default/adduser",
 	   	{
@@ -53,7 +55,9 @@ class SignUp extends React.Component {
 	   			lastname: lastname.value,
 	   			email: email.value,
 	   			password: hashedPassword,
-	   			role: "member"
+	   			role: "member",
+	   			address: address.value,
+	   			pincode: pincode.value
 	   		})
 	   		}
 	   	).then(function(response) {
@@ -64,12 +68,19 @@ class SignUp extends React.Component {
 	   			response.type
 	   		);
 	   		if (response.status == 200) {
-	   			that.setSuccess();
-	   			that.showModal();
 	   			return response.json();
 	   		}
+	   	}).then(function(data){
+	   		 console.log(data.body);
+	   		 if(data.body != "\"user already exist\"") {
+	   		 	console.log("came here");
+               that.setSuccess();
+	   		   that.showModal();
+	   		}else {
+              alert("Username already exist! Please, try with different username.");
+	   		}
 	   	});
-	  } else {
+	 } else {
 	  	that.setFailed();
 	  	console.log("values are empty");
 	  	that.showModal();
@@ -117,6 +128,11 @@ class SignUp extends React.Component {
 						<input type="email" id="email" placeholder="email" />
 						<label htmlFor = "password">*Password: </label>
 						<input type="password" id="password" placeholder="password"/>
+						<label htmlFor = "address">*Address:</label>
+						<textarea id="address" name="adress" rows="4" cols="10" maxLength = "50">
+						</textarea>
+						<label htmlFor = "pincode">*Pincode:</label>
+						<input type="number" id="pincode" name="numbers" min="8" max="10"/>
 						<button id="signUpBtn" onClick={this.addUser}>
 							Sign me up!
 						</button>
