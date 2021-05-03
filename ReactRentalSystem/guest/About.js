@@ -10,7 +10,11 @@ return <div>
 			<h1 className="fh-custom-font"> Book Rental System</h1>
 			<h2> About Us</h2>
 		</header>
-		<p className="fh-custom-font-para">The Book Rental System was established in 2021. Using this application user can rent and return the book easily. User can also keep track of the book that they have rented. </p>
+		<p>The Book Rental System was established in 2021. We offer a vast range of books from different genre's. </p>
+		<p> Anyone can rent a book using our system and get it delivered to thier address and return it whenever they are done.</p>
+		<p> This is the most convenient way of reusing books as well as provides every book reading enthusiast the opportunity to explore.</p>
+
+
 
 	</main>
 	<footer>&#127926;&copy; Copyright Book Rental &#127925;</footer>
