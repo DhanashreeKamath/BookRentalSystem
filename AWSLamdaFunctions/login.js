@@ -20,8 +20,8 @@ exports.handler = (event, context, callback) => {
 
             data.Items.forEach(function(users) {
 
-
-                if(event.username===users.username  && (event.password===users.password))
+                console.log(users.username) ;
+                if(event.username===users.username)
                 {
                     console.log("Inside If.");
                     found = users ;
